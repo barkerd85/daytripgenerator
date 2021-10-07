@@ -1,0 +1,127 @@
+
+
+import random 
+
+
+cities = ['Cincinnati', 'Chicago', 'Dallas']
+randcity = random.choice(cities) 
+
+
+restaraunts_in_Cincinnati = ('Skyline Chili', 'Frishces', 'Larosas')
+
+restaraunts_in_Dallas = ('Zalats', 'Halal Guys', 'Gen Korean')
+
+restaraunts_in_Chicago = ('Portillos', 'Lou Malnatis', 'Hot Dog Station')
+
+
+transportation_in_Cincinnati = ('Cincy Metro Bus', 'Uber', 'Zipcars')
+
+transportation_in_Dallas = ('DART', 'M-Line Trolley', 'Bird electric scooters')
+
+transportation_in_Chicago = ('Water Taxis', 'CTA', 'Divvy Bikes')
+
+
+
+activities_in_Cincinnati = ('Kings Island theme park', 'Ohio Renaissance Festival', 'Cincinnati History Musuem')
+
+activities_in_Dallas = ('Dallas Art Musuem', 'Cowgirls game', 'JFK tour')
+
+activities_in_Chicago = ('Chicago Bulls game', 'Chicago Crime and Mob tour', 'Downtown boat tour')
+
+def set_city(): 
+    return random.choice(cities)
+
+def set_transportation_cincy():
+    return random.choice (transportation_in_Cincinnati)
+
+def set_activity_cincy():
+    return random.choice (activities_in_Cincinnati)
+
+def set_food_cincy():
+    return random.choice (restaraunts_in_Cincinnati)
+
+
+
+def set_transportation_dallas():
+    return random.choice (transportation_in_Dallas)
+
+def set_activity_dallas():
+    return random.choice (activities_in_Dallas)
+
+def set_food_dallas():
+    return random.choice (restaraunts_in_Dallas)
+
+
+def set_transportation_chicago():
+    return random.choice (transportation_in_Chicago)
+
+def set_activity_chicago():
+    return random.choice (activities_in_Chicago)
+
+def set_food_chicago():
+    return random.choice (restaraunts_in_Chicago)
+
+def random_city():
+    randcity = set_city()
+
+    if randcity == 'Cincinnati': 
+        transportation = set_transportation_cincy()
+        activity = random.choice (activities_in_Cincinnati)
+        food = random.choice (restaraunts_in_Cincinnati)
+    
+    if randcity == 'Dallas': 
+        transportation = random.choice (transportation_in_Dallas)
+        activity = random.choice (activities_in_Dallas)
+        food = random.choice (restaraunts_in_Dallas )
+
+
+    if randcity == 'Chicago': 
+        transportation = random.choice (transportation_in_Chicago)
+        activity = random.choice (activities_in_Chicago)
+        food = random.choice (restaraunts_in_Chicago )
+
+    print(f'Your day trip is planned to {randcity} where you will be riding in style with {transportation}, and having dinner at {food}. Then you will be enjoying the {activity}. ')
+    return [randcity, transportation, activity, food]
+
+activities_list = random_city()
+print(f'Your day trip is planned to {activities_list[0]} where you will be riding in style with {activities_list[1] }, and having dinner at {activities_list[3]}. Then you will be enjoying the {activities_list[2]}. ')
+question = input ('Are you happy with your day trip selections?')
+if question == ('yes'):
+    print('Enjoy yourself!')
+elif question == ('no'):
+    print('well you are dumb because that looks like fun!')
+    question2 = input('What would you like to change?')
+    if question2 == 'city':
+        activities_list2 = random_city()
+        while activities_list[0] == activities_list2 [0]:
+            activities_list2 = random_city()
+        activities_list = activities_list2
+    if question2 == 'transportation':
+        if activities_list[0] == 'Chicago':
+            activities_list[1] = set_transportation_chicago()
+        if activities_list[0] == 'Dallas':
+            activities_list[1] = set_transportation_dallas()
+        if activities_list[0] == 'Cincinnati':
+            activities_list[1] = set_transportation_cincy()
+        print(f'Your day trip is planned to {activities_list[0]} where you will be riding in style with {activities_list[1] }, and having dinner at {activities_list[3]}. Then you will be enjoying the {activities_list[2]}. ')
+
+    if question2 == 'food':
+        if activities_list[0] == 'Chicago':
+            activities_list[1] = set_transportation_chicago()
+        if activities_list[0] == 'Dallas':
+            activities_list[1] = set_transportation_dallas()
+        if activities_list[0] == 'Cincinnati':
+            activities_list[1] = set_transportation_cincy()
+        print(f'Your day trip is planned to {activities_list[0]} where you will be riding in style with {activities_list[1] }, and having dinner at {activities_list[3]}. Then you will be enjoying the {activities_list[2]}. ')
+
+
+
+else:
+    input('Please answer yes or no.')
+
+
+
+
+
+
+
