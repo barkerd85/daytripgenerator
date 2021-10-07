@@ -80,15 +80,16 @@ def random_city():
         activity = random.choice (activities_in_Chicago)
         food = random.choice (restaraunts_in_Chicago )
 
-    print(f'Your day trip is planned to {randcity} where you will be riding in style with {transportation}, and having dinner at {food}. Then you will be enjoying the {activity}. ')
     return [randcity, transportation, activity, food]
 
 activities_list = random_city()
 print(f'Your day trip is planned to {activities_list[0]} where you will be riding in style with {activities_list[1] }, and having dinner at {activities_list[3]}. Then you will be enjoying the {activities_list[2]}. ')
 question = input ('Are you happy with your day trip selections?')
-if question == ('yes'):
-    print('Enjoy yourself!')
-elif question == ('no'):
+
+while question != 'yes' and question != 'no':
+    question = input('please answer yes or no')
+
+while question == ('no'):
     print('well you are dumb because that looks like fun!')
     question2 = input('What would you like to change?')
     if question2 == 'city':
@@ -96,7 +97,10 @@ elif question == ('no'):
         while activities_list[0] == activities_list2 [0]:
             activities_list2 = random_city()
         activities_list = activities_list2
-    if question2 == 'transportation':
+        print(f'Your day trip is planned to {activities_list[0]} where you will be riding in style with {activities_list[1] }, and having dinner at {activities_list[3]}. Then you will be enjoying the {activities_list[2]}. ')
+        
+        question = input ('Are you happy with your day trip selections?')       
+    elif question2 == 'transportation':
         if activities_list[0] == 'Chicago':
             activities_list[1] = set_transportation_chicago()
         if activities_list[0] == 'Dallas':
@@ -104,20 +108,35 @@ elif question == ('no'):
         if activities_list[0] == 'Cincinnati':
             activities_list[1] = set_transportation_cincy()
         print(f'Your day trip is planned to {activities_list[0]} where you will be riding in style with {activities_list[1] }, and having dinner at {activities_list[3]}. Then you will be enjoying the {activities_list[2]}. ')
+        question = input ('Are you happy with your day trip selections?')
 
-    if question2 == 'food':
+
+    elif question2 == 'food':
         if activities_list[0] == 'Chicago':
-            activities_list[1] = set_transportation_chicago()
+            activities_list[3] = set_food_chicago()
         if activities_list[0] == 'Dallas':
-            activities_list[1] = set_transportation_dallas()
+            activities_list[3] = set_food_dallas()
         if activities_list[0] == 'Cincinnati':
-            activities_list[1] = set_transportation_cincy()
+            activities_list[3] = set_food_cincy()
         print(f'Your day trip is planned to {activities_list[0]} where you will be riding in style with {activities_list[1] }, and having dinner at {activities_list[3]}. Then you will be enjoying the {activities_list[2]}. ')
+        question = input ('Are you happy with your day trip selections?')
 
 
+    elif question2 == 'activity':
+        if activities_list[0] == 'Chicago':
+            activities_list[2] = set_activity_chicago()
+        if activities_list[0] == 'Dallas':
+            activities_list[2] = set_activity_dallas()
+        if activities_list[0] == 'Cincinnati':
+            activities_list[2] = set_activity_cincy()
+        print(f'Your day trip is planned to {activities_list[0]} where you will be riding in style with {activities_list[1] }, and having dinner at {activities_list[3]}. Then you will be enjoying the {activities_list[2]}. ')
+        question = input ('Are you happy with your day trip selections?')
+    else:
+        print('please pick city, transportation, food or activity')
 
-else:
-    input('Please answer yes or no.')
+print(f'Your day trip is planned to {activities_list[0]} where you will be riding in style with {activities_list[1] }, and having dinner at {activities_list[3]}. Then you will be enjoying the {activities_list[2]}. ')
+print('enjoy yourself')
+
 
 
 
